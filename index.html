@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MERN stack</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+	<span id="title"></span>
+	<button id="btn1">click here</button>
+Api demo
+<button id="pcl">click</button> 
+<script type="text/javascript">
+	document.getElementById('pcl').onclick=()=>{
+	 const data = { username: 'example' };
+console.log(JSON.stringify(data));
+	fetch('http://localhost:5000/login', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data.username);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+}
+document.getElementById('btn1').onclick=()=>{
+fetch('http://localhost:5000/tt')
+.then(response=>response.json())
+.then(data=>{
+	document.getElementById('title').innerHTML=data;
+	console.log(data);
+})
+}
+</script>
+</body>
+</html>
